@@ -1,8 +1,10 @@
 import pandas as pd
 from twilio.rest import Client
 
-account_sid = 'AC14ca841641345048c5ada574fb99653a'
-auth_token = 'dfc34dcba944a87de17e3bea3c2d53bc'
+#Vc terá que criar(caso não tenha) uma conta no Twilio para poder utilizar desse programa
+
+account_sid = ''#Accont Sid disponivel no Twilio
+auth_token = ''#Token de acesso do Twilio
 client = Client(account_sid, auth_token)
 
 # imports que deveram ser feitos:
@@ -13,7 +15,6 @@ client = Client(account_sid, auth_token)
 # Abrir os arquivos do exel
 lista_meses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho']
 
-number = 5551997641319
 
 for mes in lista_meses:
     # tabela_vendas = pd.read_excel(f'{mes}.xlsx')
@@ -28,8 +29,8 @@ for mes in lista_meses:
         print('No mes de {} o vendedor {} arrecadou mais de 55.000 com a quantidade de vendas: {}'.format(mes, vendedor, vendas))
         message = client.messages.create(
                      body='No mes de {} o vendedor {} arrecadou mais de 55.000 com a quantidade de vendas: {}'.format(mes, vendedor, vendas),
-                     from_='+12708354602',
-                     to='+5551998955866'
+                     from_='', #Aqui vc Terá que colocar o numero gerado no Twilio
+                     to=''#Neste campo vc adicona o número de celular que ira receber a mensagem
                  )
 
         print(message.sid)
